@@ -82,25 +82,6 @@ Power BI Executive Dashboard
 
 ---
 
-## ⚙️ Repository Structure
-
-pharmaGPT/
-│
-├── airflow/ # DAGs and task definitions
-├── mlflow/ # MLflow config and artifacts
-├── mlruns/ # Local experiment runs
-├── src/
-│ ├── stream/ # Kafka producers/consumers
-│ ├── nlp/ # Text processing (DistilBERT, BERTopic)
-│ ├── cv/ # Computer Vision (ResNet, OCR, YOLO)
-│ ├── rag/ # Retrieval-Augmented Generation
-│ ├── batch/ # Spark aggregations and forecasting
-│ ├── api/ # FastAPI endpoints
-│ └── common/ # PII scrub, utilities
-├── index/faiss/ # FAISS embeddings store
-├── streamlit/ # Streamlit app
-├── docker-compose.yml # Local orchestration
-└── README.md # Project documentation
 
 ---
 
@@ -181,4 +162,5 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
