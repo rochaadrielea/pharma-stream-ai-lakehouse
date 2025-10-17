@@ -1,0 +1,140 @@
+# -------- Compose file v1: MinIO (data lake) + MLflow --------
+version: "3.8"                            # Compose schema version
+
+services:                                 # All containers we define
+  minio:                                  # Service name "minio" this is our S3-compatible data lake
+  
+    image: minio/minio:RELEASE.2024-05-10T01-41-38Z   # MinIO server image+tag
+    command: server /data --console-address ":9001"   # start server + enable console on 9001
+    environment:                          # env vars passed to the container
+      MINIO_ROOT_USER: admin              # login user for MinIO console/API
+      MINIO_ROOT_PASSWORD: adminadmin     # login password (change later)
+    ports:
+      - "9000:9000"                       # expose S3 API on localhost:9000
+      - "9001:9001"                       # expose MinIO web console on :9001
+    volumes:
+      - minio_data:/data                  # persistent storage for objects
+    healthcheck:                          # container health probe
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  create-bucket:
+    image: minio/mc
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: [""]   # reset default 'mc' entrypoint
+    command: ["/bin/sh","-c","mc alias set local http://minio:9000 admin adminadmin && mc mb --ignore-existing local/bronze || true && echo Bucket ready"]
+    restart: "no"
+
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.15.1
+    depends_on:
+      minio:
+        condition: service_healthy
+      create-bucket:
+        condition: service_completed_successfully
+    working_dir: /app
+    environment:
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+      AWS_ACCESS_KEY_ID: admin
+      AWS_SECRET_ACCESS_KEY: adminadmin
+      AWS_DEFAULT_REGION: us-east-1
+    command: >
+      mlflow server
+      --backend-store-uri sqlite:///mlflow/mlflow.db
+      --default-artifact-root s3://bronze/mlflow
+      --host 0.0.0.0
+      --port 5000
+    volumes:
+      - ./mlflow:/app/mlflow     # keep the SQLite DB
+    ports:
+      - "5000:5000"
+    # (Optional) remove healthcheck for now to avoid false negatives
+
+
+
+  airflow:
+    build:
+      context: ./airflow
+      dockerfile: Dockerfile
+    image: airflow-with-extras:2.9.3
+    container_name: airflow
+    user: "50000:0"
+    environment:
+      AIRFLOW_HOME: /opt/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__CORE__EXECUTOR: "SequentialExecutor"
+    entrypoint: ["bash","-lc"]
+    command:
+      - |
+        set -e
+        airflow db init
+        airflow users create \
+          --username admin --password admin \
+          --firstname Admin --lastname User \
+          --role Admin --email admin@example.com || true
+        airflow webserver -p 8080 &
+        exec airflow scheduler
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - airflow_data:/opt/airflow
+  
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.1
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.1
+    depends_on:
+      zookeeper:
+        condition: service_started
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+
+      # Bind two listeners (internal for containers, host for Windows)
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+
+      # Single-node safe defaults
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    ports:
+      # Expose the HOST listener: host 9092 -> container 29092
+      - "9092:29092"
+
+  kafka-setup:
+    image: confluentinc/cp-kafka:7.5.1
+    depends_on:
+      kafka:
+        condition: service_started
+    entrypoint: ["/bin/bash","-lc"]
+    command: >
+      /usr/bin/kafka-topics --create --if-not-exists --bootstrap-server kafka:9092
+        --replication-factor 1 --partitions 1 --topic reviews_raw &&
+      /usr/bin/kafka-topics --create --if-not-exists --bootstrap-server kafka:9092
+        --replication-factor 1 --partitions 1 --topic cv_events &&
+      /usr/bin/kafka-topics --create --if-not-exists --bootstrap-server kafka:9092
+        --replication-factor 1 --partitions 1 --topic alerts &&
+      echo 'Kafka topics created'
+    restart: "no"
+
+
+volumes:
+  minio_data:
+  airflow_data:
+                     
