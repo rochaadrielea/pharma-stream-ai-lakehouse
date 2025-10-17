@@ -1,4 +1,4 @@
-# Pharma Stream AI Lakehouse
+## Pharma Stream AI Lakehouse
 
 A real-time, multimodal **AI & MLOps platform** designed to transform raw pharmaceutical reviews, images, and documents into explainable insights — using **Kafka, Spark, MinIO, MLflow, Airflow, and FastAPI** under a **Lakehouse architecture (Bronze → Silver → Gold)**.  
 
@@ -162,6 +162,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
