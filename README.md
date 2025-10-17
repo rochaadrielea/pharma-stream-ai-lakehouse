@@ -111,10 +111,10 @@ pharmaGPT/
 | **1. Infrastructure Setup** | Docker Compose stack (Kafka, Airflow, MLflow, MinIO) | ✅ Completed |
 | **2. Kafka → MinIO Streaming** | Python producer + consumer writing to Bronze | ✅ Completed |
 | **3. MLflow Tracking** | Configured tracking server + artifact storage | ✅ Completed |
-| **4. Spark ETL to Silver** | Scala job transforming reviews to clean layer | ✅ Completed |
-| **5. Deep Learning Integration** | DistilBERT, ResNet, OCR | ✅ Completed |
-| **6. Airflow DAG Automation** | Nightly pipeline (ingest, summarize, forecast) | ✅ Completed |
-| **7. FastAPI REST Service** | Endpoints for sentiment/summaries | ✅ Completed |
+| **4. Spark ETL to Silver** | Scala job transforming reviews to clean layer | 🔄 In progress |
+| **5. Deep Learning Integration** | DistilBERT, ResNet, OCR | 🔄 In progress |
+| **6. Airflow DAG Automation** | Nightly pipeline (ingest, summarize, forecast) | 🔄 In progress |
+| **7. FastAPI REST Service** | Endpoints for sentiment/summaries | 🔄 In progress |
 | **8. Streamlit Dashboard** | Interactive multimodal visualization | 🔄 In progress |
 | **9. Power BI Executive Report** | Gold Layer integration | 🔜 Planned |
 | **10. CI/CD & Terraform Cloud Deployment** | Reproducible infrastructure | 🔜 Planned |
@@ -181,3 +181,4 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
