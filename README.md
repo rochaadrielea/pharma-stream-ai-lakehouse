@@ -1,5 +1,16 @@
 ## Pharma Stream AI Lakehouse
+Pharmaceutical companies receive millions of reviews, complaints, lab reports, and photos every year — from patients, doctors, and regulators.
+Most of that data is unstructured (text, PDFs, images, scanned leaflets) and scattered across silos (marketing, QA, pharmacovigilance).
 
+This means:
+
+Product issues (like side effects or packaging defects) go unnoticed for weeks or months.
+
+Compliance teams must manually analyze documents — slow and error-prone.
+
+Leadership has no real-time visibility into patient sentiment or product perception.
+
+So — the this is a tool to turn chaos into clarity.
 A real-time, multimodal **AI & MLOps platform** designed to transform raw pharmaceutical reviews, images, and documents into explainable insights — using **Kafka, Spark, MinIO, MLflow, Airflow, and FastAPI** under a **Lakehouse architecture (Bronze → Silver → Gold)**.  
 
 This project simulates how a modern pharmaceutical company could detect product issues, monitor sentiment, and ensure compliance using a unified data + AI pipeline built with open-source and cloud-ready components.
@@ -162,6 +173,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
