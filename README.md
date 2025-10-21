@@ -1,6 +1,6 @@
 ## Pharma Stream AI Lakehouse
 Pharmaceutical companies receive millions of reviews, complaints, lab reports, and photos every year — from patients, doctors, and regulators.
-Most of that data is unstructured (text, PDFs, images, scanned leaflets) and scattered across silos (marketing, QA, pharmacovigilance).
+Most of that data is unstructured (text, PDFs, images, scanned leaflets) and spread across different departments like marketing, quality, and safety teams.
 
 This means:
 
@@ -173,6 +173,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
