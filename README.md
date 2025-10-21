@@ -4,33 +4,40 @@ Most of that data is unstructured (text, PDFs, images, scanned leaflets) and spr
 
 This means:
 
-Product issues (like side effects or packaging defects) go unnoticed for weeks or months.
+* Product issues (like side effects or packaging defects) go unnoticed for weeks or months.
 
-Compliance teams must manually analyze documents — slow and error-prone.
+* Compliance teams must manually analyze documents — slow and error-prone.
 
-Leadership has no real-time visibility into patient sentiment or product perception.
+* Leadership has no real-time visibility into patient sentiment or product perception.
 
 So — the this is a tool to turn chaos into clarity.
 With this product there are 4 deliverables:
 
-1️⃣ Actionable, AI-generated insights
+1️⃣ **Actionable, AI-generated insights**
 
 LLM (Generative AI) creates concise product summaries, risk alerts, and marketing or operations recommendations based on live data.
 → Example: “Product A is trending negatively in due to packaging complaints”
-2️⃣ Automated Review Understanding (NLP)
+
+2️⃣ **Automated Review Understanding (NLP)**
+
 Uses NLP (DistilBERT + topic modeling) to clean and analyze thousands of daily reviews and reports, extracting sentiment, key themes, and frequent complaints.
 As result, Replaces manual reading with automatic trend detection, saving hundreds of analyst hours per month.
 Example: “Top complaint keywords this week: ‘broken seal,’ ‘delayed delivery,’ ‘wrong dosage label.’ Average customer sentiment fell from 4.1 to 3.5 stars.”
-3️⃣ Visual Intelligence (Computer Vision)
+
+3️⃣ **Visual Intelligence (Computer Vision)**
+
 What it does:Uses image models (ResNet50, ViT) and OCR to analyze photos of incoming and shelf products. Automatically detects packaging inconsistencies, missing dosage information, or altered warning labels — ensuring all items match approved references before being stocked or sold.
 This Helps pharmacies verify authenticity, safety, and compliance of medicines at the point of sale — preventing counterfeit or mislabeled products from reaching customers, improving trust and operational safety.
 Example:“AI detected a mismatch between the expected packaging of Paracetamol 500 mg and a newly delivered batch — missing the expiry date label. The item was automatically flagged for review before restocking.”
-4️⃣ Unified Lakehouse & BI Visibility
+
+4️⃣ **Unified Lakehouse & BI Visibility**
+
 Integrates all data into a Lakehouse (Bronze → Silver → Gold) and visualizes it in Power BI dashboards and REST APIs.
 Gives all teams — from quality to leadership — a single, trusted view of product health, sentiment, and compliance.
 Example: “Power BI dashboard shows live metrics: sentiment score per region, top complaints, flagged batches, and LLM insight feed, all updated every 5 minutes.”
 
-A real-time, multimodal **AI & MLOps platform** designed to transform raw pharmaceutical reviews, images, and documents into explainable insights — using **Kafka, Spark, MinIO, MLflow, Airflow, and FastAPI** under a **Lakehouse architecture (Bronze → Silver → Gold)**.  
+
+This is a real-time, multimodal **AI & MLOps platform** designed to transform raw pharmaceutical reviews, images, and documents into explainable insights — using **Kafka, Spark, MinIO, MLflow, Airflow, and FastAPI** under a **Lakehouse architecture (Bronze → Silver → Gold)**.  
 
 This project simulates how a modern pharmaceutical company could detect product issues, monitor sentiment, and ensure compliance using a unified data + AI pipeline built with open-source and cloud-ready components.
 
@@ -192,6 +199,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
