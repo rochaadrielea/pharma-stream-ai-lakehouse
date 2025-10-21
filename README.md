@@ -17,7 +17,7 @@ With this product there are 4 deliverables:
 
 LLM (Generative AI) creates concise product summaries, risk alerts, and marketing or operations recommendations based on live data.
 
-Example: “Product A is trending negatively in due to packaging complaints”
+Example: “Product A is trending negatively due to packaging complaints”
 
 2️⃣ **Automated Review Understanding (NLP)**
 
@@ -203,6 +203,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
