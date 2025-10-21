@@ -28,7 +28,7 @@ Example: “Top complaint keywords this week: ‘broken seal,’ ‘delayed deli
 
 3️⃣ **Visual Intelligence (Computer Vision)**
 
-Uses image models (ResNet50, ViT) and OCR to analyze photos of incoming and shelf products. Automatically detects packaging inconsistencies, missing dosage information, or altered warning labels — ensuring all items match approved references before being stocked or sold.
+Uses image models (ResNet50, ViT) and OCR to analyze photos of incoming and shelf products. Automatically detects packaging inconsistencies, missing dosage information, or altered warning labels — ensuring image of products match approved referencesand even compliances.
 This Helps pharmacies verify authenticity, safety, and compliance of medicines at the point of sale — preventing counterfeit or mislabeled products from reaching customers, improving trust and operational safety.
 
 Example:“AI detected a mismatch between the expected packaging of Paracetamol 500 mg and a newly delivered batch — missing the expiry date label. The item was automatically flagged for review before restocking.”
@@ -203,6 +203,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
