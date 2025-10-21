@@ -10,7 +10,7 @@ This means:
 
 * Leadership has no real-time visibility into patient sentiment or product perception.
 
-So — the this is a tool to turn chaos into clarity.
+So, this is a tool to turn chaos into clarity.
 With this product there are 4 deliverables:
 
 1️⃣ **Actionable, AI-generated insights**
@@ -203,6 +203,7 @@ Adriele Rocha Weisz
 Data & AI Engineer | Zurich, Switzerland
 🌐 LinkedIn
  • 📧 adriele.rocha.weisz@gmail.com
+
 
 
 
